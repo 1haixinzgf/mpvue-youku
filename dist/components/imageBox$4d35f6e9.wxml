@@ -1,0 +1,5 @@
+<template name="imageBox$4d35f6e9">
+  <view class="_div data-v-633a7a42 image-box">
+    <image src="{{imageUrl}}" alt class="_img data-v-633a7a42 box-pic"></image>
+  </view>
+</template>

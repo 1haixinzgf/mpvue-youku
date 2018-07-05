@@ -1,0 +1,8 @@
+<template name="input$32e6eb85">
+  <view class="_div data-v-7450eff5 yk-input">
+    <input type="text" placeholder="这就是世界波" value="{{model}}" bindinput="handleProxy" class="_input data-v-7450eff5 yk-input-search" data-eventid="{{'0'}}" data-comkey="{{$k}}" />
+    <view class="_div data-v-7450eff5 yk-input-img">
+      <image src="/copy-asset/static/images/yk-search.png" alt class="_img data-v-7450eff5 yk-input-pic"></image>
+    </view>
+  </view>
+</template>
