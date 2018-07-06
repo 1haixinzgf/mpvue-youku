@@ -17,6 +17,9 @@
       <image-box ></image-box></div>
     </div>
   </div>
+  <!-- <div class="swiper-content">
+    <swiper></swiper>
+  </div> -->
 </div>
   
 </template>
@@ -25,11 +28,13 @@
 import scrollview from '@/components/scrollview/scrollview'
 import input from '@/components/input/input'
 import imageBox from '@/components/imageBox/imageBox'
+import swiper from '@/components/swiper/swiper'
 export default {
   components: {
     scrollview,
     'yk-input': input,
-    imageBox
+    imageBox,
+    swiper
   }
 }
 </script>
@@ -37,7 +42,7 @@ export default {
 <style lang="stylus" scoped>
 .header
   background-color #131775
-  height 300rpx
+  height 155rpx
   width 100%
   .header-title
     height 80rpx

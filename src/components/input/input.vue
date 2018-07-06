@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
     .yk-input
         width 400rpx
         height 60rpx

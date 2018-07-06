@@ -1,7 +1,7 @@
 
 .header.data-v-5ba0021e {
   background-color: #131775;
-  height: 300rpx;
+  height: 155rpx;
   width: 100%;
 }
 .header .header-title.data-v-5ba0021e {
@@ -55,7 +55,7 @@
   font-weight: bold;
   color: #ff0;
 }
-.yk-input {
+.yk-input.data-v-7450eff5 {
   width: 400rpx;
   height: 60rpx;
   background: #26298d;
@@ -64,19 +64,19 @@
   margin-left: 10rpx;
   color: #fff;
 }
-.yk-input .yk-input-search {
+.yk-input .yk-input-search.data-v-7450eff5 {
   text-align: center;
   font-size: 30rpx;
   line-height: 30rpx;
 }
-.yk-input .yk-input-img {
+.yk-input .yk-input-img.data-v-7450eff5 {
   position: absolute;
   width: 40rpx;
   height: 40rpx;
   top: 9rpx;
   left: 70rpx;
 }
-.yk-input .yk-input-img .yk-input-pic {
+.yk-input .yk-input-img .yk-input-pic.data-v-7450eff5 {
   width: 100%;
   height: 100%;
 }
@@ -92,4 +92,27 @@
 .image-box .box-pic.data-v-633a7a42 {
   width: 80%;
   height: 80%;
+}
+.swiper.data-v-b2258cc2 {
+  background-color: #f00;
+  width: 100%;
+  position: relative;
+}
+.swiper .swiper-item.data-v-b2258cc2 {
+  width: 750rpx;
+}
+.swiper .swiper-item .item.data-v-b2258cc2 {
+  width: 100%;
+  height: 100%;
+}
+.swiper .swiper-item .img-desc.data-v-b2258cc2 {
+  position: absolute;
+  width: 600rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: left;
+  text-overflow: ellipsis;
+  color: #fff;
+  font-size: 30rpx;
+  z-index: 999;
 }
