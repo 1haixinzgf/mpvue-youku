@@ -15,15 +15,16 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../common/style/mixin'
     .image-box
-        width 50rpx
-        height 50rpx
+        wh(50rpx, 50rpx)
         border none
         background-color #26298d
         padding-top 10rpx
         padding-left 10rpx
         border-radius 50%
         .box-pic
+            // wh(80%, 80%)
             width 80%
             height 80%
 </style>

@@ -1,12 +1,21 @@
-wh($width, $heigth)
+wh($width, $height)
     width $width
-    heigth $heigth
+    height $height
 
-hlh($heigth)
-    height $heigth
-    line-height $heigth
+hlh($height)
+    height $height
+    line-height $height
     
 otw()
     overflow hidden
     text-overflow ellipsis
     white-space nowrap
+
+flex($type)
+    display flex
+    justify-content $type
+    align-items center
+
+center($height)
+    margin 0 auto
+    hlh($height)

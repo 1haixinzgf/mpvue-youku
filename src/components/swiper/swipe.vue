@@ -15,19 +15,23 @@ export default {
     data() {
         return {
             imgs: [{
-                img: "../../../static/images/yk-search.png",
+                img: "../../../static/images/swiper1.jpg",
                 desc: "你可以为 props 中的值提供一个带有验证需求的对象"
                 },
                 {
-                img: "../../../static/images/yk-search.png",
+                img: "../../../static/images/swiper2.jpg",
                 desc: "当 prop 验证失败的时候，(开发环境构建版本的) Vue 将会产生一个控制台的警告。"
                 },
                 {
-                img: "../../../static/images/yk-search.png",
+                img: "../../../static/images/swiper3.jpg",
                 desc: "当 prop 验证失败的时候， 将会产生一个控制台的警告。"
                 },
                 {
-                img: "../../../static/images/yk-search.png",
+                img: "../../../static/images/swiper4.jpg",
+                desc: "当 prop 验证失败的时候， Vue 将会产生一个控制台的警告。"
+                },
+                {
+                img: "../../../static/images/swiper5.jpg",
                 desc: "当 prop 验证失败的时候， Vue 将会产生一个控制台的警告。"
                 }
                 ]
@@ -38,8 +42,7 @@ export default {
 <style lang="stylus" scoped>
 @import  '../../common/style/mixin.styl'
     .swiper
-        height 320rpx
-        width 100%
+        wh(100%, 320rpx)
         .swiper-box
             position relative
             wh(100%, 100%)
@@ -47,11 +50,10 @@ export default {
             .swiper-desc
                 position absolute
                 left 10rpx
-                top 200rpx
+                top 240rpx
                 color #ffffff
-                font-size 30rpx
-                color red
-                width 400rpx
+                font-size 24rpx
+                width 500rpx
                 otw()
             .swiper-pic
                 wh(100%, 100%)           

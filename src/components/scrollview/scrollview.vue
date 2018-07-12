@@ -1,5 +1,5 @@
 <template>
-    <scroll-view scroll-x="true" class="header-nav" style="600rpx" >
+    <scroll-view scroll-x="true" class="header-nav"  >
         <div class="nav-list">
             <div class="nav-item active" :class="{'active': changeNav == index}"
                 v-for="(item,index) in navs" :key="index" :data-nav="index" @click="chooseTitle">
