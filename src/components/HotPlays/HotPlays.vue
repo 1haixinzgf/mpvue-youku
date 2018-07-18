@@ -1,27 +1,30 @@
 <template>
     <div class="plays-container">
-        <div class="play-item">
-            <div class="play-img">
-                <div class="play-img-title">
-                    <img src="../../../static/images/swiper3.jpg" alt="" class="play-img-pic">
-                </div>
-                <div class="play-img-sign">
-                    <img src="../../../static/images/yk-search.png" alt="" class="play-sign-pic">
-                </div>
-                <div class="play-update">
-                    <span>更新到26集</span>
-                </div>
-            </div>
-            <div class="play-content">
-                <div class="play-title">
-                    <span>镇魂</span>
-                </div>
-                <div class="play-desc">
-                    <div>
-                        <span>推销员程序员</span>
+        
+        <div class="play-list" v-for="item in plays" :key="item.id">
+            <div class="play-item">
+                <div class="play-img">
+                    <div class="play-img-title">
+                        <img :src="item.imgUrl" alt="" class="play-img-pic">
                     </div>
-                    <div class="play-desc-img">
-                        <img src="../../../static/images/points.png" alt="" class="play-desc-pic">
+                    <div class="play-img-sign">
+                        <img :src="item.imgSign" alt="" class="play-sign-pic">
+                    </div>
+                    <div class="play-update">
+                        <span>{{item.update}}</span>
+                    </div>
+                </div>
+                <div class="play-content">
+                    <div class="play-title">
+                        <span>{{item.playTitle}}</span>
+                    </div>
+                    <div class="play-desc">
+                        <div>
+                            <span>{{item.playDesc}}</span>
+                        </div>
+                        <div class="play-desc-img">
+                            <img src="../../../static/images/points.png" alt="" class="play-desc-pic">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -31,17 +34,67 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            plays: [
+                {
+                    imgUrl: '../../../static/images/swiper3.jpg',
+                    imgSign: '../../../static/images/yk-search.png',
+                    update: '更新到26集',
+                    playTitle: '镇魂',
+                    playDesc: '这是一个好恐怖的电影啊'
+                },
+                {
+                    imgUrl: '../../../static/images/swiper3.jpg',
+                    imgSign: '../../../static/images/yk-search.png',
+                    update: '更新到26集',
+                    playTitle: '镇魂',
+                    playDesc: '这是一个好恐怖的电影啊'
+                },
+                {
+                    imgUrl: '../../../static/images/swiper3.jpg',
+                    imgSign: '../../../static/images/yk-search.png',
+                    update: '更新到26集',
+                    playTitle: '镇魂',
+                    playDesc: '这是一个好恐怖的电影啊'
+                },
+                {
+                    imgUrl: '../../../static/images/swiper3.jpg',
+                    imgSign: '../../../static/images/yk-search.png',
+                    update: '更新到26集',
+                    playTitle: '镇魂',
+                    playDesc: '这是一个好恐怖的电影啊'
+                },
+                {
+                    imgUrl: '../../../static/images/swiper3.jpg',
+                    imgSign: '../../../static/images/yk-search.png',
+                    update: '更新到26集',
+                    playTitle: '镇魂',
+                    playDesc: '这是一个好恐怖的电影啊'
+                },
+                {
+                    imgUrl: '../../../static/images/swiper3.jpg',
+                    imgSign: '../../../static/images/yk-search.png',
+                    update: '更新到26集',
+                    playTitle: '镇魂',
+                    playDesc: '这是一个好恐怖的电影啊'
+                }
+            ]
+        }
+    }
 }
 </script>
 
 <style lang="stylus" scoped>
 @import  '../../common/style/mixin'
     .plays-container
-        wh(370rpx, 350rpx)
+        width 100%
+        overflow hidden
+
         .play-item
-            margin-right 5rpx
+            float left
             wh(370rpx, 350rpx)
+            margin-right 5rpx
             .play-img
                 wh(370rpx, 200rpx)
                 position relative
@@ -66,7 +119,7 @@ export default {
                     font-size 22rpx
 
             .play-content
-                width 370rpx
+                width 350rpx
                 height 120rpx
                 margin-top 10rpx
                 margin-left 12rpx

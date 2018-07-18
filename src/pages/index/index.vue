@@ -1,7 +1,7 @@
 <template>
 <div id="app">
   <div class="container">
-    <!-- <div class="header">
+    <div class="header">
       <div class="header-title">
         <div class="header-title-left">
           <img src="../../../static/images/yk-search.png" alt="" class="header-title-pic">
@@ -21,8 +21,18 @@
     <div class="swiper-content">
       <v-swiper></v-swiper>
       <swiper-touch></swiper-touch>
-    </div> -->
-    <hot-plays></hot-plays>
+    </div>
+    <div class="plays">
+      <div class="play-title">
+        <div class="title-img">
+          <img src="../../../static/images/points.png" alt="" class="title-pic">
+        </div>
+        <div class="title-content">
+          <span>正在热播</span>
+        </div>
+      </div>
+      <hot-plays></hot-plays>
+    </div>
   </div>
   
 </div>
@@ -48,6 +58,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import  '../../common/style/mixin'
 .container
   width 100%
   .header
@@ -75,4 +86,18 @@ export default {
       display flex
       justify-content space-around
       text-align center
+  .plays
+    width 100%
+    .play-title
+      wh(100%, 60rpx)
+      display flex
+      align-items center
+      .title-img
+        wh(30rpx, 30rpx)
+        margin-left 20rpx
+        .title-pic
+          wh(100%, 100%)
+      .title-content
+        font-weight bold
+        margin-left 10rpx
 </style>
