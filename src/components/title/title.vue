@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import  '../../common/style/mixin'
+
     .title
         wh(100%, 80rpx)
         .img

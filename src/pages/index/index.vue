@@ -28,11 +28,12 @@
           <img src="../../../static/images/points.png" alt="" class="title-pic">
         </div>
         <div class="title-content">
-          <span>正在热播</span>
+          <span @click="na">正在热播</span>
         </div>
       </div>
-      <hot-plays></hot-plays>
+      <hot-plays ></hot-plays>
     </div>
+    
   </div>
   
 </div>
@@ -53,6 +54,17 @@ export default {
     'v-swiper':swipe,
     swiperTouch,
     HotPlays
+  },
+  methods: {
+    na () {
+      console.log(2)
+      wx.switchTab({
+        url: '/pages/discover/main',
+        success: function(res){
+        console.log("success")
+                    },
+      })
+    }
   }
 }
 </script>

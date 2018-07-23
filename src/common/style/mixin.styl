@@ -19,3 +19,19 @@ flex($type)
 center($height)
     margin 0 auto
     hlh($height)
+
+borderC($color)
+    border 1rpx solid $color
+
+line($top, $left)
+    .line
+        position relative
+        &::after
+            content ''
+            wh(750rpx, 1rpx)
+            background-color #bfbfbf
+            position absolute
+            left $left
+            z-index 200
+            top $top
+            transform scaleY(0.4)
