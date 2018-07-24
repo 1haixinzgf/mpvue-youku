@@ -1,8 +1,8 @@
 <template>
     <scroll-view scroll-x="true" class="box">
         <div class="boxlist">
-            <div class="box-item " :class="{'active': changeNav == index+1}"
-                v-for="(item,index) in navs" :key="index" :data-nav="item" @click="chooseTitle">
+            <div class="box-item " :class="{'active': changeNav == index}"
+                v-for="(item,index) in navs" :key="index" :data-nav="item" @click="chooseTitle(index)">
                 {{item+1}}
             </div>   
         </div>
@@ -13,13 +13,13 @@
 export default {
     data() {
         return {
-            changeNav: 1,
+            changeNav: 0,
             navs: 22
         }
     },
     methods: {
-        chooseTitle() {
-
+        chooseTitle(index) {
+            this.changeNav = index
         }
     }
 }

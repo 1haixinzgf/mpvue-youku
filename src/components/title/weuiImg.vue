@@ -1,5 +1,5 @@
 <template>
-    <div  class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <div  class="weui-cell weui-cell_access" style="padding-left: 5rpx">
         <div class="weui-cell__hd">
             <image :src="imgIcon" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;" />
         </div>
@@ -30,7 +30,7 @@ export default {
 
     .font-text
         font-weight bold
-        font-size 30rpx
+        font-size 36rpx
     .font-to
         font-size 23rpx
 </style>

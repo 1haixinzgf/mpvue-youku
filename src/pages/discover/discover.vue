@@ -1,31 +1,41 @@
 <template>
     <div class="discovery">
-        <div class="play-video">
+        <div class="play-video" >
             <video-play></video-play>
         </div>
-        <div class="video-desc line">
-            <div class="video-title">
-                <div class="video" :class="{actived: isActived}">视频</div>
-                <div class="star" :class="{actived: !isActived}">星球</div>
+        <div class="play-container" v-if="true">
+            <div class="video-desc line">
+                <div class="video-title">
+                    <div class="video" :class="{actived: isActived}">视频</div>
+                    <div class="star" :class="{actived: !isActived}">星球</div>
+                </div>
+                <div class="video-content">
+                <weui-img imgIcon="../../../static/images/yk-logo-1.png" titleText="古剑奇谭2" isShowTo="true" toText="简介"></weui-img>
+                <div class="video-title-desc">
+                    <span class="title-desc-rating">{{play.rating}}</span><span>/{{play.playKind}}/{{play.playTotal}}/{{play.playNum}}</span>
+                </div>
+                <div class="video-content-desc">
+                    <span>{{play.desc}}</span>
+                </div>
+                </div>
             </div>
-            <div class="video-content">
-               <weui-img imgIcon="../../../static/images/yk-logo-1.png" titleText="古剑奇谭2" isShowTo="true" toText="简介"></weui-img>
-               <div class="video-title-desc">
-                   <span class="title-desc-rating">{{play.rating}}</span><span>/{{play.playKind}}/{{play.playTotal}}/{{play.playNum}}</span>
-               </div>
-               <div class="video-content-desc">
-                   <span>{{play.desc}}</span>
-               </div>
+            <div class="play-vip">
+                <weui-no titleText="选集" isShowTo="true" contentText="会员周二更新好多，非会员周一更新">
+                </weui-no>
+                <div class="vip-choose">
+                    <scroll-box></scroll-box>
+                </div>
+                <div class="play-around">
+                </div>        
             </div>
         </div>
-        <div class="play-vip">
-            <weui-no titleText="选集" isShowTo="true" contentText="会员周二更新好多，非会员周一更新"></weui-no>
-            <div class="vip-choose">
-                <scroll-box></scroll-box>
+        <div class="plays-choose" v-if="false">
+            <play-box></play-box>
+        </div>
+        <div class="plays-around">
+            <div class="around-title">
+                <weui-no titleText="周边视频" isShowTo="true"></weui-no>
             </div>
-        <div class="play-around">
-                
-        </div>        
         </div>
     </div>
 </template>
@@ -35,7 +45,7 @@ import VideoPlay from '@/components/VideoPlay/VideoPlay'
 import weuiImg from '@/components/title/weuiImg'
 import weuiNo from '@/components/title/weuiNo'
 import scrollBox from '@/components/scrollView/scrollBox'
-
+import playBox from './playBox'
 export default {
     data () {
         return {
@@ -54,7 +64,8 @@ export default {
         // Loadingg
         weuiImg,
         weuiNo,
-        scrollBox
+        scrollBox,
+        playBox
     }
 }
 </script>
@@ -97,7 +108,7 @@ export default {
         padding-left 10rpx
         padding-bottom 0
     .video-title-desc
-        font-size 22rpx
+        font-size 25rpx
         color #bfbfbf
         hlh(40rpx)
         padding-left 10rpx
@@ -106,16 +117,17 @@ export default {
     
     .video-content-desc
         color #736e6d
-        font-size 22rpx
+        font-size 25rpx
         otw()
         padding-left 10rpx
         padding-right 15rpx
-        hlh(40rpx)
+        hlh(50rpx)
         
     .play-vip
         otw()
         height 230rpx
         position relative
+        margin-top 10rpx
         &::before
             content ''
             wh(750rpx, 1rpx)
@@ -123,10 +135,23 @@ export default {
             position absolute
             left 0rpx
             z-index 200
-            top 10rpx
+            top 20rpx
+            transform scaleY(0.4)
+        &::after
+            content ''
+            wh(750rpx, 1rpx)
+            background-color #bfbfbf
+            position absolute
+            left 0rpx
+            z-index 200
+            top 220rpx
             transform scaleY(0.4)
         
         .vip-choose
             height 150rpx
+    .play-choose
+        height calc(100%-400rpx)
+        position relative
+        
 
 </style>

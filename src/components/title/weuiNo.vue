@@ -1,7 +1,8 @@
 <template>
-    <div  class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <div class="weui-cell weui-cell_access" >
         <div class="weui-cell__bd font-text">{{titleText}}</div>
         <div v-if="isShowTo" class="weui-cell__ft weui-cell__ft_in-access font-to" >{{contentText}}</div>
+        <slot name="hide"></slot>
     </div>
 </template>
 
@@ -11,7 +12,7 @@ export default {
         titleText: String,
         isShowTo: {
             type: Boolean,
-            default: true
+            default: false
         },
         contentText: String
     }
@@ -22,8 +23,9 @@ export default {
 
     .font-text
         font-weight bold
-        font-size 30rpx
+        font-size 36rpx
     .font-to
         font-size 23rpx
+         
 </style>
 
