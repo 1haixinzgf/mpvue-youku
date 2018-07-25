@@ -3,7 +3,7 @@
     <weui-no titleText="选集">
     </weui-no>
     <div class="hide-img">
-        <img src="../../../static/images/hide.png" alt="" class="hide-pic">
+        <img src="../../../static/images/hide.png" alt="" class="hide-pic" @click="hideAnthology()">
     </div>
     <div class="intro-vip">
       <span>会员周二周五12点更新4集，非会员不更新</span>
@@ -50,8 +50,10 @@ export default {
   },
   methods: {
     choosePlay(index) {
-      console.log(index)
       this.changeNav = index
+    },
+    hideAnthology() {
+      this.$emit('hideAnthology')
     }
   }
 }

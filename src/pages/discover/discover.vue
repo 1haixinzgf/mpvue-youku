@@ -3,40 +3,41 @@
         <div class="play-video" >
             <video-play></video-play>
         </div>
-        <div class="play-container" v-if="true">
+        <div class="play-container" v-if="isShowAllDesc">
             <div class="video-desc line">
                 <div class="video-title">
                     <div class="video" :class="{actived: isActived}">视频</div>
                     <div class="star" :class="{actived: !isActived}">星球</div>
                 </div>
                 <div class="video-content">
-                <weui-img imgIcon="../../../static/images/yk-logo-1.png" titleText="古剑奇谭2" isShowTo="true" toText="简介"></weui-img>
-                <div class="video-title-desc">
-                    <span class="title-desc-rating">{{play.rating}}</span><span>/{{play.playKind}}/{{play.playTotal}}/{{play.playNum}}</span>
+                    <weui-img imgIcon="../../../static/images/yk-logo-1.png" titleText="古剑奇谭2" isShowTo="true" toText="简介"></weui-img>
+                    <div class="video-title-desc">
+                        <span class="title-desc-rating">{{play.rating}}</span><span>/{{play.playKind}}/{{play.playTotal}}/{{play.playNum}}</span>
+                    </div>
+                    <div class="video-content-desc">
+                        <span>{{play.desc}}</span>
+                    </div>
                 </div>
-                <div class="video-content-desc">
-                    <span>{{play.desc}}</span>
+                <div class="play-vip">
+                    <weui-no titleText="选集" v-on:navigateColl="navigateColl" isShowTo="true" contentText="会员周二更新好多，非会员周一更新"></weui-no>
+                    <div class="vip-choose">
+                        <scroll-box></scroll-box>
+                    </div>    
                 </div>
+                <div class="plays-around">
+                    <div class="around-title">
+                        <weui-no titleText="周边视频" isShowTo="true"></weui-no>
+                    </div>
+                    <div class="around-video">
+                        <scroll-video></scroll-video>
+                    </div>
                 </div>
             </div>
-            <div class="play-vip">
-                <weui-no titleText="选集" isShowTo="true" contentText="会员周二更新好多，非会员周一更新">
-                </weui-no>
-                <div class="vip-choose">
-                    <scroll-box></scroll-box>
-                </div>
-                <div class="play-around">
-                </div>        
-            </div>
         </div>
-        <div class="plays-choose" v-if="false">
-            <play-box></play-box>
+        <div class="plays-choose" v-if="isShowPlays" :animation="animationData">
+            <play-box v-on:hideAnthology="hideAnthology"></play-box>
         </div>
-        <div class="plays-around">
-            <div class="around-title">
-                <weui-no titleText="周边视频" isShowTo="true"></weui-no>
-            </div>
-        </div>
+        
     </div>
 </template>
 
@@ -46,6 +47,7 @@ import weuiImg from '@/components/title/weuiImg'
 import weuiNo from '@/components/title/weuiNo'
 import scrollBox from '@/components/scrollView/scrollBox'
 import playBox from './playBox'
+import scrollVideo from '@/components/scrollView/scrollVideo'
 export default {
     data () {
         return {
@@ -56,8 +58,43 @@ export default {
                 playTotal: '3.1亿次播放量',
                 playNum: '共26集',
                 desc: '林小纯作为一名大一新生来到学校报到，入住时巧遇是有陈晨成，他们之间会发生什么'
-            }
+            },
+            isShowAllDesc: true,
+            animationData: {},
+            isShowPlays: true
         }
+    },
+  
+    methods: {
+        navigateColl () {
+            this.isShowPlays = true
+            console.log(this.isShowAllDesc)
+            var animation = wx.createAnimation({
+                duration: 1500,
+                // timingFunction: 'linear'
+            });
+            var animation1 = animation.translateY(-400).step()
+            this.animationData = animation1
+            setTimeout(() => {
+                this.isShowAllDesc = false
+            }, 1500)
+            
+        },
+        
+        hideAnthology () {
+
+            var animation = wx.createAnimation({
+                duration: 150,
+                // timingFunction: 'linear'
+            });
+            // console.log(animation, 222)
+            var animation2 = animation.translateY(-400).step()
+            this.animationData = animation2
+            setTimeout (() => {
+              this.isShowPlays = false
+              this.isShowAllDesc = true
+            },150)
+    }
     },
     components: {
         VideoPlay,
@@ -65,7 +102,8 @@ export default {
         weuiImg,
         weuiNo,
         scrollBox,
-        playBox
+        playBox,
+        scrollVideo
     }
 }
 </script>
@@ -101,7 +139,7 @@ export default {
             position absolute
             left -250rpx
             z-index 200
-            top 80rpx
+            top 70rpx
             transform scaleY(0.4)
     
     .video-content
@@ -125,7 +163,7 @@ export default {
         
     .play-vip
         otw()
-        height 230rpx
+        height 210rpx
         position relative
         margin-top 10rpx
         &::before
@@ -135,7 +173,7 @@ export default {
             position absolute
             left 0rpx
             z-index 200
-            top 20rpx
+            top 10rpx
             transform scaleY(0.4)
         &::after
             content ''
@@ -144,14 +182,21 @@ export default {
             position absolute
             left 0rpx
             z-index 200
-            top 220rpx
+            top 208rpx
             transform scaleY(0.4)
         
         .vip-choose
-            height 150rpx
-    .play-choose
-        height calc(100%-400rpx)
-        position relative
+            height 100rpx
+    .plays-choose
+        height calc(100%-300rpx)
+        position absolute
+        top 100%
+        z-index 200
         
+    .play-around
+        .around-title
+            height 100rpx
+        .around-video
+            height 220rpx
 
 </style>
