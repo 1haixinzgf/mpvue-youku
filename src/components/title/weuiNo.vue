@@ -1,7 +1,7 @@
 <template>
     <div class="weui-cell weui-cell_access" >
         <div class="weui-cell__bd font-text">{{titleText}}</div>
-        <div v-if="isShowTo" class="weui-cell__ft weui-cell__ft_in-access font-to" >{{contentText}}</div>
+        <div v-if="isShowTo" class="weui-cell__ft weui-cell__ft_in-access font-to" @click="navigate()">{{contentText}}</div>
         <slot name="hide"></slot>
     </div>
 </template>
@@ -15,6 +15,11 @@ export default {
             default: false
         },
         contentText: String
+    },
+    methods: {
+        navigate() {
+            this.$emit('navigateColl')
+        }
     }
 }
 </script>
