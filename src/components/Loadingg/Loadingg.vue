@@ -16,7 +16,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import  '../../common/style/mixin'
+      <div class="one-comment" v-for="(item,index) in otherComment" :key="index">
+
     .Loading
         wh(50rpx,50rpx)
         border-top 10rpx solid #1296db

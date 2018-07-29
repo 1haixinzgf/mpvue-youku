@@ -1,7 +1,7 @@
 <template name="scrollview$9a7c77ae">
-  <scroll-view scroll-x="true" class="_scroll-view data-v-5a65fddf header-nav" style="600rpx">
+  <scroll-view scroll-x="true" class="_scroll-view data-v-5a65fddf header-nav">
     <view class="_div data-v-5a65fddf nav-list">
-      <view class="_div data-v-5a65fddf nav-item active {{[changeNav == index ? 'active' : '']}}" wx:key="index" key="{{index}}" data-nav="{{index}}" bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" wx:for="{{navs}}" wx:for-index="index"
+      <view class="_div data-v-5a65fddf nav-item {{[changeNav == index ? 'active' : '']}}" wx:key="index" key="{{index}}" data-nav="{{index}}" bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" wx:for="{{navs}}" wx:for-index="index"
         wx:for-item="item"> {{item}} </view>
     </view>
   </scroll-view>

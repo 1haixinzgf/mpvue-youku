@@ -13,35 +13,36 @@
 
 <script>
 export default {
+  watch: {
+    isAddLaud(val,oldVal) {
+      if(val) this.upLauds++;
+      else this.upLauds--;
+    },
+    isSubLaud(val,oldVal) {
+      if(val) this.downLauds++;
+      else this.downLauds--;
+    }
+  },
   data () {
     return {
       upLauds: 1235,
       downLauds: 200,
       isAddLaud: false,
-      isSubLaud: false,
-      laud: false
+      isSubLaud: false
     }
   },
   methods: {
     addLaud () {
-      this.laud = !this.laud
-      if(this.laud) {
-        this.upLauds +=1;
       this.isAddLaud = true;
       this.isSubLaud = false;
-      }
-      
     },
-    subLaud () {
-      this.laud = !this.laud 
-      if (!this.laud) {
-        this.downLauds -=1;
-        this.isSubLaud = true;
-        this.isAddLaud = false;
-      }
+    subLaud() {
+      this.isAddLaud = false;
+      this.isSubLaud = true;
     }
   }
 }
+
 </script>
 
 <style lang="stylus" scoped>

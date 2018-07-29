@@ -1,24 +1,27 @@
-<import src="scrollview$9a7c77ae" />
-<import src="input$32e6eb85" />
-<import src="imageBox$4d35f6e9" />
+<import src="indexTitle$45fd3bad" />
+<import src="swipe$7b0ac959" />
+<import src="swiperTouch$74629c06" />
+<import src="HotPlays$00dbfd29" />
 <template name="index$2f6e5e6d">
-  <view class="_div data-v-5ba0021e container">
-    <view class="_div data-v-5ba0021e header">
-      <view class="_div data-v-5ba0021e header-title">
-        <view class="_div data-v-5ba0021e header-title-left">
-          <image src="/copy-asset/static/images/yk-search.png" alt class="_img data-v-5ba0021e header-title-pic"></image>
-        </view>
-        <view class="_div data-v-5ba0021e header-title-right">
-          <template data="{{...$root[$kk+'0'], $root}}" is="scrollview$9a7c77ae"></template>
-        </view>
+  <view id="app" class="_div data-v-5ba0021e">
+    <view class="_div data-v-5ba0021e container">
+      <view class="_div data-v-5ba0021e header">
+        <template data="{{...$root[$kk+'0'], $root}}" is="indexTitle$45fd3bad"></template>
       </view>
-      <view class="_div data-v-5ba0021e header-content">
-        <template data="{{...$root[$kk+'1'], $root}}" is="input$32e6eb85"></template>
-        <template data="{{...$root[$kk+'2'], $root}}" is="imageBox$4d35f6e9"></template>
-        <template data="{{...$root[$kk+'3'], $root}}" is="imageBox$4d35f6e9"></template>
-        <view style="margin-right: 10rpx" class="_div data-v-5ba0021e">
-          <template data="{{...$root[$kk+'4'], $root}}" is="imageBox$4d35f6e9"></template>
+      <view class="_div data-v-5ba0021e swiper-content">
+        <template data="{{...$root[$kk+'1'], $root}}" is="swipe$7b0ac959"></template>
+        <template data="{{...$root[$kk+'2'], $root}}" is="swiperTouch$74629c06"></template>
+      </view>
+      <view class="_div data-v-5ba0021e plays">
+        <view class="_div data-v-5ba0021e play-title">
+          <view class="_div data-v-5ba0021e title-img">
+            <image src="/copy-asset/static/images/points.png" alt class="_img data-v-5ba0021e title-pic"></image>
+          </view>
+          <view class="_div data-v-5ba0021e title-content">
+            <label bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_span data-v-5ba0021e">正在热播</label>
+          </view>
         </view>
+        <template data="{{...$root[$kk+'3'], $root}}" is="HotPlays$00dbfd29"></template>
       </view>
     </view>
   </view>

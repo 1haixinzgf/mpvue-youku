@@ -30,7 +30,7 @@ export default {
 <style lang="stylus" scoped>
   @import  '../../common/style/mixin'
   .userInfo
-    wh(100%, 150rpx)
+    wh(100%, 130rpx)
     flex(space-between)
     .user-Avar
       wh(80rpx, 80rpx)

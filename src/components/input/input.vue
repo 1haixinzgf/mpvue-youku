@@ -1,7 +1,7 @@
 <template>
     <div class="yk-input">
-        <input type="text" placeholder="这就是世界波" v-model="model" class="yk-input-search">
-        <div class="yk-input-img">
+        <input type="text" placeholder="这就是世界波" v-model="model" class="yk-input-search" v-on:input="searchTitle(model)">
+        <div class="yk-input-img" v-show="!model.length">
         <img src="../../../static/images/yk-search.png" alt="" class="yk-input-pic">
     </div></div>
 </template>
@@ -10,10 +10,18 @@
 export default {
     data() {
         return {
-
+            model: ''
         }
     },
-
+    methods: {
+        searchTitle(model) {
+            wx.showModel({
+                title: '暂不支持',
+                icon: 'success',
+                duration: 2000
+            })
+        }
+    }
 }
 </script>
 
@@ -29,7 +37,8 @@ export default {
         .yk-input-search
             text-align center
             font-size 30rpx
-            line-height 30rpx
+            height 60rpx
+            line-height 60rpx
         .yk-input-img
             position absolute
             width 40rpx

@@ -42,19 +42,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="play-comment">
-                    <div class="userInfo">
-                      <user-info></user-info>  
-                    </div>
-                    <laud></laud>
+                <div class="comment" v-for="(comment, index) in comments" :key="index">
+                    <comment :comment="comment"></comment>
                 </div>
-                <div class="user-comment">
-                    <span class="comment-hot">
-                        <i class="iconfont icon-hotComment icon-comment"></i>
-                        <span>热评</span>
-                    </span>
-                    <span class="comment-content">{{commentContent}}</span>
-                </div>
+               
             </div>
             <div class="plays-choose" v-if="isShowPlays" :animation="animationData">
                 <play-box v-on:hideAnthology="hideAnthology"></play-box>
@@ -70,8 +61,7 @@ import weuiNo from '@/components/title/weuiNo'
 import scrollBox from '@/components/scrollView/scrollBox'
 import playBox from './playBox'
 import scrollVideo from '@/components/scrollView/scrollVideo'
-import userInfo from '@/components/userInfo/userInfo'
-import Laud from '@/components/laud/Laud'
+import Comment from '@/components/comment/Comment'
 export default {
     data () {
         return {
@@ -88,8 +78,43 @@ export default {
             isShowV: false,
             animationData: {},
             isShowPlays: false,
-            commentContent: '这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，'
-        }
+            comments:
+            [{
+                id: 3,
+                commentContent: '这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，',
+                otherComment: [{
+                username: '微信用户124215624876',
+                content: '可以自己来改造啊'
+                },{
+                username: '微信用户124215624876',
+                content: '可以自己来改造啊'
+                }],
+                otherCommentNum: 20
+            },{
+                id: 4,
+                commentContent: '这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，',
+                otherComment: [{
+                    username: '微信用户124215624876',
+                    content: '可以自己来改造啊'
+                },{
+                    username: '微信用户124215624876',
+                    content: '可以自己来改造啊'
+                }],
+                otherCommentNum: 20
+            },
+            {
+                id: 5,
+                commentContent: '这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，',
+                otherComment: [{
+                    username: '微信用户124215624876',
+                    content: '可以自己来改造啊'
+                },{
+                    username: '微信用户124215624876',
+                    content: '可以自己来改造啊'
+                }],
+                otherCommentNum: 20
+            }]
+        }   
     },
     components: {
         VideoPlay,
@@ -98,8 +123,7 @@ export default {
         scrollBox,
         playBox,
         scrollVideo,
-        userInfo,
-        Laud
+        Comment
     },
     methods: {
         navigateColl () {
@@ -252,25 +276,6 @@ export default {
         .around-video
             height 220rpx
         
-    .play-comment
-        flex(space-between)
-        .userInfo
-            margin-left 20rpx
-    .user-comment
-        width 90%
-        margin 0 auto 
-        .comment-hot
-            font-size 23rpx
-            color red
-            border 1rpx solid red
-            wh(80rpx, 40rpx)
-            .icon-comment
-                display inline-block
-        .comment-content
-            font-size 28rpx
-            word-wrap wrap
-            color #282828
-            pl5rpx
-
-
+    
+    
 </style>

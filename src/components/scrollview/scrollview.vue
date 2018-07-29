@@ -1,8 +1,8 @@
 <template>
     <scroll-view scroll-x="true" class="header-nav"  >
         <div class="nav-list">
-            <div class="nav-item active" :class="{'active': changeNav == index}"
-                v-for="(item,index) in navs" :key="index" :data-nav="index" @click="chooseTitle">
+            <div class="nav-item" :class="{'active': changeNav == index}"
+                v-for="(item,index) in navs" :key="index" :data-nav="index" @click="chooseTitle(index)">
                 {{item}}
             </div>   
         </div>
@@ -13,14 +13,15 @@
 export default {
     data() {
         return {
-            changeNav: 1,
-            navs: ["精选","世界杯","夜现场","看点","剧集","综艺","少儿","电影","直播",
+            changeNav: 0,
+            navs: ["精选","世界杯","夜现场","pp中超","剧集","综艺","少儿","电影","直播",
             "精选","世界杯","夜现场","看点","剧集","综艺","少儿","电影","直播"]
         }
     },
     methods: {
-        chooseTitle() {
-
+        chooseTitle(index) {
+            console.log(index)
+            this.changeNav = index
         }
     }
 }
@@ -46,7 +47,6 @@ export default {
             height 80rpx
             display inline-block
         .active
-            font-size 40px
+            font-size 33rpx
             font-weight bold
-            color yellow
 </style>
