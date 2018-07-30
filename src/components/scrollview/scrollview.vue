@@ -11,17 +11,21 @@
 
 <script>
 export default {
+    props: {
+        navs: Array
+    },
     data() {
         return {
-            changeNav: 0,
-            navs: ["精选","世界杯","夜现场","pp中超","剧集","综艺","少儿","电影","直播",
-            "精选","世界杯","夜现场","看点","剧集","综艺","少儿","电影","直播"]
-        }
+            changeNav: 0
+        }  
     },
     methods: {
         chooseTitle(index) {
-            console.log(index)
-            this.changeNav = index
+            // console.log(index)
+            this.changeNav = index;
+            // wx.navigateTo({
+            //     url: ''
+            // })
         }
     }
 }

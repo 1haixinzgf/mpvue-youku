@@ -16,8 +16,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-more">
-                    <div class="more-text">
+                <div class="swiper-more" v-if="loadingMore">
+                    <div class="more-text" @click="showMore()">
                         <span>查看更多&nbsp;></span>
                     </div>
                 </div>
@@ -28,38 +28,18 @@
 
 <script>
 export default {
-    data () {
-        return {
-            swiperContent: [{
-                img: "../../../static/images/touch2.png",
-                title: '头条推荐',
-                desc: '孙俪新剧赵丽颖陆毅董洁配角！男主也是个大傻子,这是垃圾电视'
-            },
-            {
-                img: "../../../static/images/touch1.png",
-                title: '头条推荐',
-                desc: '孙俪新剧赵丽颖陆毅董洁配角！男主也是个大傻子,这是垃圾电视'
-            },
-            {
-                img: "../../../static/images/touch3.png",
-                title: '头条推荐',
-                desc: '孙俪新剧赵丽颖陆毅董洁配角！男主也是个大傻子,这是垃圾电视'
-            },
-            {
-                img: "../../../static/images/touch4.png",
-                title: '头条推荐',
-                desc: '孙俪新剧赵丽颖陆毅董洁配角！男主也是个大傻子,这是垃圾电视'
-            },
-            {
-                img: "../../../static/images/touch5.jpg",
-                title: '头条推荐',
-                desc: '孙俪新剧赵丽颖陆毅董洁配角！男主也是个大傻子,这是垃圾电视'
-            },
-            {
-                img: "../../../static/images/touch6.jpg",
-                title: '头条推荐',
-                desc: '孙俪新剧赵丽颖陆毅董洁配角！男主也是个大傻子,这是垃圾电视'
-            }]
+    props: {
+        swiperContent: Array,
+        loadingMore : {
+            type: Boolean,
+            default: true
+        }
+    },
+    methods: {
+        showMore () {
+            this.$emit('showMore')
+            // console.log(this.swiperContent,22222222)
+            
         }
     }
 }
@@ -100,7 +80,7 @@ export default {
                             .content-img-pic
                                 wh(100%, 100%)
                         .swiper-content-text
-                            wh(324rpx, 75rpx)
+                            width 324rpx
                             margin-right 15rpx
                             margin-left 10rpx
                             font-size 23rpx
@@ -120,6 +100,9 @@ export default {
                     wh(200rpx, 60rpx)
                     font-size 20rpx
                     hlh(60rpx)
+                    position:relative
+                    bottom 40rpx
+
                     .more-text
                         margin-left 40rpx
                         

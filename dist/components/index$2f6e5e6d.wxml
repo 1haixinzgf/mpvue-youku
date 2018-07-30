@@ -6,22 +6,22 @@
   <view id="app" class="_div data-v-5ba0021e">
     <view class="_div data-v-5ba0021e container">
       <view class="_div data-v-5ba0021e header">
-        <template data="{{...$root[$kk+'0'], $root}}" is="indexTitle$45fd3bad"></template>
+        <template hasToast="true" data="{{...$root[$kk+'0'], $root}}" is="indexTitle$45fd3bad"></template>
       </view>
       <view class="_div data-v-5ba0021e swiper-content">
         <template data="{{...$root[$kk+'1'], $root}}" is="swipe$7b0ac959"></template>
-        <template data="{{...$root[$kk+'2'], $root}}" is="swiperTouch$74629c06"></template>
+        <template bindshowMore="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'2'], $root}}" is="swiperTouch$74629c06"></template>
       </view>
       <view class="_div data-v-5ba0021e plays">
         <view class="_div data-v-5ba0021e play-title">
           <view class="_div data-v-5ba0021e title-img">
-            <image src="/copy-asset/static/images/points.png" alt class="_img data-v-5ba0021e title-pic"></image>
+            <image src="/copy-asset/static/images/hot.png" alt class="_img data-v-5ba0021e title-pic"></image>
           </view>
           <view class="_div data-v-5ba0021e title-content">
-            <label bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_span data-v-5ba0021e">正在热播</label>
+            <label class="_span data-v-5ba0021e">正在热播</label>
           </view>
         </view>
-        <template data="{{...$root[$kk+'3'], $root}}" is="HotPlays$00dbfd29"></template>
+        <template binddeletePlay="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'3'], $root}}" is="HotPlays$00dbfd29"></template>
       </view>
     </view>
   </view>

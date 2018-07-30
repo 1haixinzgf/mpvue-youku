@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "better-scroll": "^1.12.5",
+    "flyio": "^0.6.0",
     "mpvue": "^1.0.11"
   },
   "devDependencies": {

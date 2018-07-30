@@ -9,6 +9,6 @@ fly.interceptors.request.use((config,promise)=>{
 })
 //配置请求基地址
 Vue.prototype.$http=fly
-fly.config.baseURL="https://www.easy-mock.com/mock/5aded45053796b38dd26e970/"
+fly.config.baseURL="https://www.easy-mock.com/mock/5b58027e9ddd1140ec2eb5b4/yk/api/"
 
 export default fly

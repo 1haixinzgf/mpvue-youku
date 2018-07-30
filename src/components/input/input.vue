@@ -2,8 +2,9 @@
     <div class="yk-input">
         <input type="text" placeholder="这就是世界波" v-model="model" class="yk-input-search" v-on:input="searchTitle(model)">
         <div class="yk-input-img" v-show="!model.length">
-        <img src="../../../static/images/yk-search.png" alt="" class="yk-input-pic">
-    </div></div>
+            <img src="../../../static/images/yk-search.png" alt="" class="yk-input-pic">
+        </div>
+    </div>
 </template>
 
 <script>
@@ -15,7 +16,7 @@ export default {
     },
     methods: {
         searchTitle(model) {
-            wx.showModel({
+            wx.showToast({
                 title: '暂不支持',
                 icon: 'success',
                 duration: 2000
@@ -27,7 +28,7 @@ export default {
 
 <style lang="stylus" scoped>
     .yk-input
-        width 400rpx
+        width 450rpx
         height 60rpx
         background #26298d
         position relative
@@ -43,8 +44,8 @@ export default {
             position absolute
             width 40rpx
             height 40rpx
-            top 9rpx
-            left 70rpx
+            top 12rpx
+            left 95rpx
             .yk-input-pic
                 width 100%
                 height 100%

@@ -1,14 +1,13 @@
 <template>
     <div class="plays-container">
-        
-        <div class="play-list" v-for="item in plays" :key="item.id">
-            <div class="play-item">
+        <div class="play-item" v-for="item in plays" :key="item.id">
+            <div>
                 <div class="play-img">
                     <div class="play-img-title">
                         <img :src="item.imgUrl" alt="" class="play-img-pic">
                     </div>
-                    <div class="play-img-sign">
-                        <img :src="item.imgSign" alt="" class="play-sign-pic">
+                    <div class="play-img-sign" v-if="item.imgSign">
+                        <i class="iconfont icon-vip"></i>
                     </div>
                     <div class="play-update">
                         <span>{{item.update}}</span>
@@ -22,7 +21,7 @@
                         <div>
                             <span>{{item.playDesc}}</span>
                         </div>
-                        <div class="play-desc-img">
+                        <div class="play-desc-img" @click="deletePlay(index)">
                             <img src="../../../static/images/points.png" alt="" class="play-desc-pic">
                         </div>
                     </div>
@@ -30,56 +29,21 @@
             </div>
         </div>
     </div>
+    
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            plays: [
-                {
-                    imgUrl: '../../../static/images/swiper3.jpg',
-                    imgSign: '../../../static/images/yk-search.png',
-                    update: '更新到26集',
-                    playTitle: '镇魂',
-                    playDesc: '这是一个好恐怖的电影啊'
-                },
-                {
-                    imgUrl: '../../../static/images/swiper3.jpg',
-                    imgSign: '../../../static/images/yk-search.png',
-                    update: '更新到26集',
-                    playTitle: '镇魂',
-                    playDesc: '这是一个好恐怖的电影啊'
-                },
-                {
-                    imgUrl: '../../../static/images/swiper3.jpg',
-                    imgSign: '../../../static/images/yk-search.png',
-                    update: '更新到26集',
-                    playTitle: '镇魂',
-                    playDesc: '这是一个好恐怖的电影啊'
-                },
-                {
-                    imgUrl: '../../../static/images/swiper3.jpg',
-                    imgSign: '../../../static/images/yk-search.png',
-                    update: '更新到26集',
-                    playTitle: '镇魂',
-                    playDesc: '这是一个好恐怖的电影啊'
-                },
-                {
-                    imgUrl: '../../../static/images/swiper3.jpg',
-                    imgSign: '../../../static/images/yk-search.png',
-                    update: '更新到26集',
-                    playTitle: '镇魂',
-                    playDesc: '这是一个好恐怖的电影啊'
-                },
-                {
-                    imgUrl: '../../../static/images/swiper3.jpg',
-                    imgSign: '../../../static/images/yk-search.png',
-                    update: '更新到26集',
-                    playTitle: '镇魂',
-                    playDesc: '这是一个好恐怖的电影啊'
-                }
-            ]
+    data () {
+        isNotFun: true
+    },
+    props : {
+        plays: Array
+    },
+    methods: {
+        deletePlay (index) {
+            console.log(index)
+            this.$emit('deletePlay', index)
         }
     }
 }
@@ -94,7 +58,8 @@ export default {
         .play-item
             float left
             wh(370rpx, 350rpx)
-            margin-right 5rpx
+            margin-right 12rpx
+            position relative
             .play-img
                 wh(370rpx, 200rpx)
                 position relative
@@ -107,6 +72,7 @@ export default {
                     top 2rpx
                     right 10rpx
                     wh(50rpx, 25rpx)
+                    color #e16531
                     .play-sign-pic
                         wh(100%, 100%)
                 .play-update
@@ -127,6 +93,7 @@ export default {
                     font-size 28rpx
                     color #282828
                     text-align left
+
                 .play-desc
                     font-size 22rpx 
                     color #383838
@@ -138,5 +105,11 @@ export default {
                         .play-desc-pic
                             wh(100%, 100%)
 
-
 </style>
+
+<style scoped>
+.play-item:nth-child(2n) {
+      margin-right: 0;
+}
+</style>
+
