@@ -16,7 +16,7 @@
           <view class="_div data-v-fc32762a video {{[isActived1 ? 'actived' : '']}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">视频</view>
           <view class="_div data-v-fc32762a star {{[isActived2 ? 'actived' : '']}}" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">星球</view>
         </view>
-        <view wx:if="{{false}}" class="_div data-v-fc32762a">
+        <view wx:if="{{chooseTopic}}" class="_div data-v-fc32762a">
           <view class="_div data-v-fc32762a video-content">
             <template imgIcon="../../../static/images/yk-logo-1.png" titleText="古剑奇谭2" isShowTo="true" toText="简介" data="{{...$root[$kk+'1'], $root}}" is="weuiImg$844f38ec"></template>
             <view class="_div data-v-fc32762a video-title-desc">
@@ -50,13 +50,15 @@
             </view>
           </view>
         </view>
-        <view class="_div data-v-fc32762a comment" wx:key="index" key="{{index}}" wx:for="{{comments}}" wx:for-index="index" wx:for-item="comment">
-          <template data="{{...$root[$kk+'8-'+index], $root}}" is="Comment$c7ff1ee2"></template>
-        </view>
+        <scroll-view scroll-y style="height:500px" class="_scroll-view data-v-fc32762a comment" wx:if="{{!chooseTopic}}">
+          <view wx:key="index" key="{{index}}" wx:for="{{comments}}" wx:for-index="index" wx:for-item="comment" class="_div data-v-fc32762a">
+            <template data="{{...$root[$kk+'8-'+index], $root}}" is="Comment$c7ff1ee2"></template>
+          </view>
+        </scroll-view>
       </view>
-      <view class="_div data-v-fc32762a plays-choose" wx:if="{{isShowPlays}}" animation="{{animationData}}">
-        <template bindhideAnthology="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'9'], $root}}" is="playBox$2854332f"></template>
-      </view>
+    </view>
+    <view class="_div data-v-fc32762a plays-choose" wx:if="{{isShowPlays}}" animation="{{animationData}}">
+      <template bindhideAnthology="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'9'], $root}}" is="playBox$2854332f"></template>
     </view>
   </view>
 </template>

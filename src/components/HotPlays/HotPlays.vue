@@ -1,6 +1,6 @@
 <template>
     <div class="plays-container">
-        <div class="play-item" v-for="item in plays" :key="item.id">
+        <div class="play-item" v-for="item in plays" :key="item.id" data-id="item.id" @click="play(index)">
             <div>
                 <div class="play-img">
                     <div class="play-img-title">
@@ -42,8 +42,12 @@ export default {
     },
     methods: {
         deletePlay (index) {
-            console.log(index)
+            // console.log(index)
             this.$emit('deletePlay', index)
+        },
+        play(index) {
+            const id = this.plays[index].id
+            this.$emit('playTV', id)
         }
     }
 }

@@ -4,21 +4,35 @@
     <div class="header">
       <v-title hasToast="true"></v-title>
     </div>
-    <div class="swiper-content">
-      <v-swiper :imgs="imgs"></v-swiper>
-      <swiper-touch :swiperContent="swiperContent" @showMore="showMore()"></swiper-touch>
-    </div>
-    <div class="plays">
-      <div class="play-title">
-        <div class="title-img">
-          <img src="../../../static/images/hot.png" alt="" class="title-pic">
+      <div class="swiper-content">
+        <v-swiper :imgs="imgs"></v-swiper>
+        <swiper-touch :swiperContent="swiperContent" @showMore="showMore()"></swiper-touch>
+      </div>
+      <div class="plays">
+        <div class="play-title">
+          <div class="title-img">
+            <img src="../../../static/images/hot.png" alt="" class="title-pic">
+          </div>
+          <div class="title-content">
+            <span>正在热播</span>
+          </div>
         </div>
-        <div class="title-content">
-          <span>正在热播</span>
+        <hot-plays :plays="plays" @deletePlay='deletePlay' @playTV="playTV"></hot-plays>
+        <div class="plays-change">
+          <div class="btn" @click="getMorePlays()">
+            <span>更多热播</span>
+            <div style="display:inline-block">
+              <i class="iconfont icon-vip"></i>
+            </div>
+          </div>
+          <div class="btn" @click="changePlays()">
+            <span>换一换</span>
+            <div style="display:inline-block">          
+              <i class="iconfont icon-vip"></i>
+            </div>
+          </div>
         </div>
       </div>
-      <hot-plays :plays="plays" @deletePlay='deletePlay'></hot-plays>
-    </div>
   </div>
 </div>
 </template>
@@ -35,7 +49,8 @@ export default {
     return {
       imgs: [],
       swiperContent: [],
-      plays: []
+      plays: [],
+      scroll: ''
     }
   },
   components: {
@@ -45,23 +60,30 @@ export default {
     'v-title': indexTitle
   },
   methods: {
-    na () {
-      console.log(2)
-      wx.switchTab({
-        url: '/pages/discover/main',
+    playTV (id) {
+      console.log(id)
+      wx.navigateTo({
+        url: '/pages/discover/main?id=id',
         success: function(res){
         console.log("success")
         },
       })
     },
-    deletePlay(index) {
+     deletePlay(index) {
       console.log(index,222)
       wx.showModal({
         title: '提示',
         content: '是否不感兴趣',
         success: (res) => {
           if (res.confirm) {
-            this.plays.splice(index, 1)
+            if (this.plays.length <=6) {
+              this.$http.get('swiper#!method=get')
+                .then((res) => {
+                  this.plays.push(...(res.data.data.plays))
+                  this.plays.length = 6
+              })
+              this.plays.splice(index, 1)
+            }
           } else if (res.cancel) {
             console.log('用户点击取消')
           }
@@ -104,12 +126,29 @@ export default {
           this.swiperContent.push(...(res.data.data.swiperContent))
         }
       })
+    },
+    getMorePlays () {
+
+    },
+    changePlays () {
+        wx.showLoading({
+        title: '加载中',
+      })
+      this.$http.get('playsMore#!method=get')
+      .then((res) => {
+        if (res.status = CODE_STATUS) {
+          this.plays = res.data.data.plays
+          wx.hideLoading()
+        }
+      }).catch ((e) => {
+        console.log(e)
+      })
     }
   },
   created () {
     this._getSwiper();
     this._getSwiperTouch();
-  }
+  },
 }
 </script>
 
@@ -136,4 +175,15 @@ export default {
       .title-content
         font-weight bold
         margin-left 10rpx
+    .plays-change
+      height 80rpx
+      flex(space-around)
+      .btn
+        width 250rpx
+        hlh(80rpx)
+        text-align center
+        font-size 25rpx
+        background #f4f4ed
+        
+
 </style>

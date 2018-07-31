@@ -29,6 +29,20 @@
   font-weight: bold;
   margin-left: 10rpx;
 }
+.container .plays .plays-change.data-v-5ba0021e {
+  height: 80rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.container .plays .plays-change .btn.data-v-5ba0021e {
+  width: 250rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 25rpx;
+  background: #f4f4ed;
+}
 .swiper.data-v-bba8473a {
   width: 100%;
   height: 320rpx;

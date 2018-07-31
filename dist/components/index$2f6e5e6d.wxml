@@ -21,7 +21,21 @@
             <label class="_span data-v-5ba0021e">正在热播</label>
           </view>
         </view>
-        <template binddeletePlay="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'3'], $root}}" is="HotPlays$00dbfd29"></template>
+        <template binddeletePlay="handleProxy" bindplayTV="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'3'], $root}}" is="HotPlays$00dbfd29"></template>
+        <view class="_div data-v-5ba0021e plays-change">
+          <view class="_div data-v-5ba0021e btn" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">
+            <label class="_span data-v-5ba0021e">更多热播</label>
+            <view style="display:inline-block" class="_div data-v-5ba0021e">
+              <view class="_i data-v-5ba0021e iconfont icon-vip"></view>
+            </view>
+          </view>
+          <view class="_div data-v-5ba0021e btn" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}">
+            <label class="_span data-v-5ba0021e">换一换</label>
+            <view style="display:inline-block" class="_div data-v-5ba0021e">
+              <view class="_i data-v-5ba0021e iconfont icon-vip"></view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
   </view>

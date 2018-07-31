@@ -32,23 +32,6 @@ export default {
   props: {
     comment: Object
   },
-  // data () {
-  //   return {
-  //     comment:
-  //     {
-  //       id: 3,
-  //       commentContent: '这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，',
-  //       otherComment: [{
-  //         username: '微信用户124215624876',
-  //         content: '可以自己来改造啊'
-  //       },{
-  //         username: '微信用户124215624876',
-  //         content: '可以自己来改造啊'
-  //       }],
-  //       otherCommentNum: 20
-  //     }
-  //   }
-  // },
   components: {
     userInfo,
     Laud

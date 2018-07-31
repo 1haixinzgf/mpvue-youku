@@ -97,6 +97,12 @@
 .play-vip .vip-choose.data-v-fc32762a {
   height: 100rpx;
 }
+.comment.data-v-fc32762a {
+  height: 500rpx;
+  width: 100%;
+  top: 470rpx;
+  z-index: 200;
+}
 .plays-choose.data-v-fc32762a {
   height: calc(100% -200rpx);
   width: 100%;

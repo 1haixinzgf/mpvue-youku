@@ -9,7 +9,7 @@
                     <div class="video" :class="{actived: isActived1}" @click="changeTopic1()">视频</div>
                     <div class="star" :class="{actived: isActived2}" @click="changeTopic2()">星球</div>
                 </div>
-                <div v-if="false">
+                <div v-if="chooseTopic">
                     <div class="video-content" >
                         <weui-img imgIcon="../../../static/images/yk-logo-1.png" titleText="古剑奇谭2" isShowTo="true" toText="简介"></weui-img>
                         <div class="video-title-desc">
@@ -42,14 +42,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="comment" v-for="(comment, index) in comments" :key="index">
-                    <comment :comment="comment"></comment>
-                </div>
-               
+                <scroll-view scroll-y style="height:500px" class="comment" v-if="!chooseTopic">
+                    <div  v-for="(comment, index) in comments" :key="index" >
+                        <comment :comment="comment"></comment>
+                    </div>
+                </scroll-view>
             </div>
-            <div class="plays-choose" v-if="isShowPlays" :animation="animationData">
-                <play-box v-on:hideAnthology="hideAnthology"></play-box>
-            </div>
+        </div>
+        <div class="plays-choose" v-if="isShowPlays" :animation="animationData">
+            <play-box v-on:hideAnthology="hideAnthology"></play-box>
         </div>
     </div>
 </template>
@@ -62,58 +63,20 @@ import scrollBox from '@/components/scrollView/scrollBox'
 import playBox from './playBox'
 import scrollVideo from '@/components/scrollView/scrollVideo'
 import Comment from '@/components/comment/Comment'
+import fly from '@/utils/fly'
+import CODE_STATUS from '@/utils/config'
 export default {
     data () {
         return {
+            chooseTopic: true,
             isActived1: true,
             isActived2: false,
-            play: {
-                rating: '8.0分',
-                playKind: '校园 青春 情感',
-                playTotal: '3.1亿次播放量',
-                playNum: '共26集',
-                desc: '林小纯作为一名大一新生来到学校报到，入住时巧遇是有陈晨成，他们之间会发生什么'
-            },
-            isShowAllDesc: true,
+            play: '',
+            isShowAllDesc: true,//除视频以下
             isShowV: false,
             animationData: {},
-            isShowPlays: false,
-            comments:
-            [{
-                id: 3,
-                commentContent: '这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，',
-                otherComment: [{
-                username: '微信用户124215624876',
-                content: '可以自己来改造啊'
-                },{
-                username: '微信用户124215624876',
-                content: '可以自己来改造啊'
-                }],
-                otherCommentNum: 20
-            },{
-                id: 4,
-                commentContent: '这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，',
-                otherComment: [{
-                    username: '微信用户124215624876',
-                    content: '可以自己来改造啊'
-                },{
-                    username: '微信用户124215624876',
-                    content: '可以自己来改造啊'
-                }],
-                otherCommentNum: 20
-            },
-            {
-                id: 5,
-                commentContent: '这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，这是第一条热评，',
-                otherComment: [{
-                    username: '微信用户124215624876',
-                    content: '可以自己来改造啊'
-                },{
-                    username: '微信用户124215624876',
-                    content: '可以自己来改造啊'
-                }],
-                otherCommentNum: 20
-            }]
+            isShowPlays: false,// 选集
+            comments: []
         }   
     },
     components: {
@@ -161,11 +124,31 @@ export default {
         changeTopic1() {
             this.isActived1 = true
             this.isActived2 = false
+            this.chooseTopic = true
         },
         changeTopic2() {
             this.isActived1 = false
             this.isActived2 = true
-        }
+            this.chooseTopic = false
+        },
+        // 请求页面数据
+        getPlay(id) {
+            wx.showLoading({
+            title: '加载中',
+        })
+            this.$http.get('play/2001')// 数据接口只有2001
+            .then((res) => {
+                if (res.status = CODE_STATUS) {
+                this.comments = res.data.data.comment;
+                this.play = res.data.data.play
+                wx.hideLoading()
+                }
+            })
+       }         
+    },
+    onLoad(options) {
+        const id = options.id
+        this.getPlay(id)
     }
 }
 </script>
@@ -249,6 +232,11 @@ export default {
         
         .vip-choose
             height 100rpx
+    .comment
+        height 500rpx
+        width 100%
+        top 470rpx
+        z-index 200
     .plays-choose
         height calc(100%-200rpx)
         width 100%
